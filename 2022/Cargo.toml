@@ -1,0 +1,9 @@
+[workspace]
+
+members = [
+	"day*",
+	"utils"
+]
+
+[workspace.dependencies]
+utils = { path = "utils" }
