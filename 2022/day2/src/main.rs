@@ -41,7 +41,7 @@ fn score(player1: &RPS, player2: &RPS) -> usize {
     match player2.cmp(player1) {
         Ordering::Equal => score += 3_usize,
         Ordering::Greater => score += 6_usize,
-        Ordering::Less => {},
+        Ordering::Less => {}
     }
 
     score
@@ -49,33 +49,32 @@ fn score(player1: &RPS, player2: &RPS) -> usize {
 
 fn match_players(sign1: &str, sign2: &str) -> Option<(RPS, RPS)> {
     match (sign1, sign2) {
-        ("A", "X") => { Some((RPS::Rock, RPS::Rock)) },
-        ("A", "Y") => { Some((RPS::Rock, RPS::Paper)) },
-        ("A", "Z") => { Some((RPS::Rock, RPS::Scissors)) },
-        ("B", "X") => { Some((RPS::Paper, RPS::Rock)) },
-        ("B", "Y") => { Some((RPS::Paper, RPS::Paper)) },
-        ("B", "Z") => { Some((RPS::Paper, RPS::Scissors)) },
-        ("C", "X") => { Some((RPS::Scissors, RPS::Rock)) },
-        ("C", "Y") => { Some((RPS::Scissors, RPS::Paper)) },
-        ("C", "Z") => { Some((RPS::Scissors, RPS::Scissors)) },
+        ("A", "X") => Some((RPS::Rock, RPS::Rock)),
+        ("A", "Y") => Some((RPS::Rock, RPS::Paper)),
+        ("A", "Z") => Some((RPS::Rock, RPS::Scissors)),
+        ("B", "X") => Some((RPS::Paper, RPS::Rock)),
+        ("B", "Y") => Some((RPS::Paper, RPS::Paper)),
+        ("B", "Z") => Some((RPS::Paper, RPS::Scissors)),
+        ("C", "X") => Some((RPS::Scissors, RPS::Rock)),
+        ("C", "Y") => Some((RPS::Scissors, RPS::Paper)),
+        ("C", "Z") => Some((RPS::Scissors, RPS::Scissors)),
         _ => None,
     }
 }
 
 fn match_signs(sign1: &str, sign2: &str) -> Option<(RPS, RPS)> {
     match (sign1, sign2) {
-        ("A", "X") => { Some((RPS::Rock, RPS::Scissors)) }, // Rock beats Scissors (X = lose)
-        ("A", "Y") => { Some((RPS::Rock, RPS::Rock)) }, // Rock draws Rock (Y = draw)
-        ("A", "Z") => { Some((RPS::Rock, RPS::Paper)) }, // Rock loses to Paper (Z = win)
-        ("B", "X") => { Some((RPS::Paper, RPS::Rock)) },
-        ("B", "Y") => { Some((RPS::Paper, RPS::Paper)) },
-        ("B", "Z") => { Some((RPS::Paper, RPS::Scissors)) },
-        ("C", "X") => { Some((RPS::Scissors, RPS::Paper)) },
-        ("C", "Y") => { Some((RPS::Scissors, RPS::Scissors)) },
-        ("C", "Z") => { Some((RPS::Scissors, RPS::Rock)) },
+        ("A", "X") => Some((RPS::Rock, RPS::Scissors)), // Rock beats Scissors (X = lose)
+        ("A", "Y") => Some((RPS::Rock, RPS::Rock)),     // Rock draws Rock (Y = draw)
+        ("A", "Z") => Some((RPS::Rock, RPS::Paper)),    // Rock loses to Paper (Z = win)
+        ("B", "X") => Some((RPS::Paper, RPS::Rock)),
+        ("B", "Y") => Some((RPS::Paper, RPS::Paper)),
+        ("B", "Z") => Some((RPS::Paper, RPS::Scissors)),
+        ("C", "X") => Some((RPS::Scissors, RPS::Paper)),
+        ("C", "Y") => Some((RPS::Scissors, RPS::Scissors)),
+        ("C", "Z") => Some((RPS::Scissors, RPS::Rock)),
         _ => None,
     }
-
 }
 
 fn main() {
