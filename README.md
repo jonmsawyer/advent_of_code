@@ -1,2 +1,2 @@
-# advent_of_code
+# Advent of Code
 Repository to host Advent of Code solutions (https://adventofcode.com/)
