@@ -1,9 +1,11 @@
-/// Read the input for this day's puzzle
+/// Read the input for this day's puzzle.
 ///
 /// The input is assumed to be in a file called "input.txt" within the
 /// crate's root directory.
 ///
-/// Returns a [`Result`] containing the input file's contents as a string
+/// Returns a [`Result`] containing the input file's contents as a string.
+///
+/// Thanks to Travis Veazey <https://github.com/Kromey>.
 ///
 /// [`Result`]: std::io::Result
 #[macro_export]
