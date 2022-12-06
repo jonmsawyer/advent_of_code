@@ -13,22 +13,31 @@ fn main() {
             calories.push(0_usize);
             continue;
         }
+
         calories[elf] += line.parse::<usize>().expect("Expected integer input.");
     }
 
     calories.sort();
 
+    //
+    // Part One
+    //
+
     let mut result = calories.pop().expect("Expected value from end of vector.");
 
     println!(
-        "Part One: The most amount of Calories an Elf is carrying is: {}",
+        "The most amount of Calories an Elf is carrying is: {}",
         result
     );
 
+    //
+    // Part Two
+    //
+    
     result += calories.iter().rev().take(2).sum::<usize>();
 
     println!(
-        "Part Two: The total calories of the top three Calorie-carrying Elves are: {}",
+        "The total calories of the top three Calorie-carrying Elves are: {}",
         result
     );
 }

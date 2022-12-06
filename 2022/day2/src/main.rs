@@ -87,10 +87,21 @@ fn main() {
         if line.is_empty() {
             continue;
         }
+        
         let line_vec: Vec<&str> = line.split_whitespace().collect();
+
+        //
+        // Part One
+        //
+
         if let Some((player1, player2)) = match_players(line_vec[0], line_vec[1]) {
             player_score_part_one += score(&player1, &player2);
         }
+
+        //
+        // Part Two
+        //
+
         if let Some((player1, player2)) = match_signs(line_vec[0], line_vec[1]) {
             player_score_part_two += score(&player1, &player2);
         }
