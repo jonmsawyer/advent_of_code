@@ -33,7 +33,7 @@ fn main() {
     //
     // Part Two
     //
-    
+
     result += calories.iter().rev().take(2).sum::<usize>();
 
     println!(

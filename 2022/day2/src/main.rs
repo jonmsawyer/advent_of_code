@@ -87,7 +87,7 @@ fn main() {
         if line.is_empty() {
             continue;
         }
-        
+
         let line_vec: Vec<&str> = line.split_whitespace().collect();
 
         //

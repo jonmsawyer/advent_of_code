@@ -42,9 +42,11 @@ fn main() {
         {
             overlapping_count += 1
         }
-
     }
 
     println!("The number of contained sections is: {}", contained_count);
-    println!("The number of overlapping sections is: {}", overlapping_count);
+    println!(
+        "The number of overlapping sections is: {}",
+        overlapping_count
+    );
 }
