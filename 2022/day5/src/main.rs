@@ -11,11 +11,9 @@ fn get_crates(line: &str) -> Vec<Option<char>> {
             if ('1'..='9').contains(&c) {
                 crates.clear();
                 return crates;
-            }
-            else if ('A'..='Z').contains(&c) {
+            } else if ('A'..='Z').contains(&c) {
                 crates.push(Some(c));
-            }
-            else if c == ' ' {
+            } else if c == ' ' {
                 crates.push(None);
             }
         }
@@ -108,6 +106,7 @@ fn main() {
     let input = read_puzzle_input!().expect("Could not get input.");
     let mut stacks1 = Vec::<Vec<Option<char>>>::with_capacity(STACKS_LEN); // because of our static input
     let mut stacks2 = Vec::<Vec<Option<char>>>::with_capacity(STACKS_LEN); // because of our static input
+
     // Parsing state. `0` if parsing the initial stacks of crates; `1` if parsing move list.
     let mut state = 0_usize;
 
@@ -166,7 +165,6 @@ fn main() {
                 }
             }
         }
-
         // Parse the move list.
         else if state == 1 {
             let op = parse_move(line);

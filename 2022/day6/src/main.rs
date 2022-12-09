@@ -2,9 +2,6 @@ use std::collections::HashSet;
 
 use utils::*;
 
-const SHORT: usize = 4;
-const LONG: usize = 14;
-
 fn main() {
     let input = read_puzzle_input!().expect("Could not get input.");
 
@@ -26,7 +23,7 @@ fn main() {
                 set.insert(*c);
             }
 
-            if set.len() == SHORT {
+            if set.len() == 4 {
                 println!("Start-of-packet marker is: {}", idx + 4);
                 break;
             }
@@ -38,14 +35,12 @@ fn main() {
         // Part Two
         //
 
-        set.clear();
-
         for (idx, line) in line.windows(14).enumerate() {
             for c in line {
                 set.insert(*c);
             }
 
-            if set.len() == LONG {
+            if set.len() == 14 {
                 println!("Start-of-message marker is: {}", idx + 14);
                 break;
             }
