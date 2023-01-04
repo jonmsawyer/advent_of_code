@@ -1,5 +1,5 @@
-use std::fmt;
 use std::collections::HashMap;
+use std::fmt;
 
 use itertools::Itertools;
 
@@ -30,56 +30,58 @@ impl FileSystem {
 
         for el in line.split(' ') {
             // The order of these if {...} else if {...} statements are important.
-            if el.eq("$") { // Is command prompt?
+            if el.eq("$") {
+                // Is command prompt?
                 print!("$ ");
                 continue;
-            }
-            else if el.eq("cd") { // Is change directory command?
+            } else if el.eq("cd") {
+                // Is change directory command?
                 self.command_kind = CommandKind::CD;
                 self.file_type = FileType::Dir;
                 continue;
-            }
-            else if el.eq("ls") { // Is list command?
+            } else if el.eq("ls") {
+                // Is list command?
                 println!("ls");
                 self.command_kind = CommandKind::LS;
                 continue;
-            }
-            else if el.eq("dir") { // Is directory listing?
+            } else if el.eq("dir") {
+                // Is directory listing?
                 self.file_type = FileType::Dir;
                 continue;
-            }
-            else if el.eq("..") { // Is parent directory?
+            } else if el.eq("..") {
+                // Is parent directory?
                 self.pop_path();
                 println!("cd {:<20}New path  (pop): {}", "..", self.path.join(""));
                 self.apply_command();
                 continue;
-            }
-            else if let Ok(fs) = el.parse::<usize>() { // Is file?
+            } else if let Ok(fs) = el.parse::<usize>() {
+                // Is file?
                 self.file_type = FileType::File;
                 self.file_size = fs;
                 continue;
-            }
-            else if self.command_kind == CommandKind::CD { // Is new `cd` directory path?
+            } else if self.command_kind == CommandKind::CD {
+                // Is new `cd` directory path?
                 self.push_path(el.to_string());
                 println!("cd {:<20}New path (push): {}", el, self.path.join(""));
                 self.apply_command();
                 continue;
-            }
-            else if self.file_type == FileType::Dir { // Continue directory listing.
+            } else if self.file_type == FileType::Dir {
+                // Continue directory listing.
                 self.file_name = el.to_string();
-                println!("dir {dir:<21}New dir        : {{dir_name: \"{dir}\"}}", dir=el);
+                println!(
+                    "dir {dir:<21}New dir        : {{dir_name: \"{dir}\"}}",
+                    dir = el
+                );
                 self.apply_command();
                 continue;
-            }
-            else if self.file_type == FileType::File { // Continue file listing.
+            } else if self.file_type == FileType::File {
+                // Continue file listing.
                 self.file_name = el.to_string();
 
                 let print = format!("{} {}", self.file_size, el);
                 println!(
                     "{:<25}New file       : {{file_name: \"{}\", file_size: {}}}",
-                    print,
-                    self.file_name,
-                    self.file_size
+                    print, self.file_name, self.file_size
                 );
 
                 self.apply_command();
@@ -98,8 +100,7 @@ impl FileSystem {
             if let Some(entry) = self.root.get_mut(&self.path.join("")) {
                 println!(">>> Apply command: File={:?}", file);
                 entry.push(file);
-            }
-            else {
+            } else {
                 let new_vec = vec![file.clone()];
                 println!(">>> Apply command: File={:?}; New Vec={:?}", file, new_vec);
                 self.root.entry(self.path.join("")).or_insert(new_vec);
@@ -108,9 +109,10 @@ impl FileSystem {
             // Update the directory size as per all file sizes.
             if let Some(entry) = self.dir_size.get_mut(&self.path.join("")) {
                 *entry += self.file_size;
-            }
-            else {
-                self.dir_size.entry(self.path.join("")).or_insert(self.file_size);
+            } else {
+                self.dir_size
+                    .entry(self.path.join(""))
+                    .or_insert(self.file_size);
             }
 
             // Update the parent directory's size (recursive until root (/)).
@@ -126,8 +128,7 @@ impl FileSystem {
                     *entry += self.file_size;
                 }
             }
-        }
-        else if self.file_type == FileType::Dir && !self.file_name.eq("") {
+        } else if self.file_type == FileType::Dir && !self.file_name.eq("") {
             println!(">>> Apply command: Dir={}", self.file_name);
             let mut new_path = self.path.clone();
             new_path.push(self.file_name.clone());
@@ -150,8 +151,7 @@ impl FileSystem {
             self.path.pop();
             if self.path.is_empty() {
                 self.path.push("/".to_string()); // We always have a root
-            }
-            else {
+            } else {
                 self.path.pop();
             }
         }
@@ -183,7 +183,10 @@ impl FileSystem {
             }
         }
 
-        println!("Part One: The total of all directores of size 100,000 or less is: {}", total);
+        println!(
+            "Part One: The total of all directores of size 100,000 or less is: {}",
+            total
+        );
     }
 
     //
@@ -231,12 +234,16 @@ impl Default for FileSystem {
 
 impl fmt::Display for FileSystem {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        writeln!(f, "FileSystem:")
-            .expect("Should be able to write diagnostic.");
+        writeln!(f, "FileSystem:").expect("Should be able to write diagnostic.");
 
         for path in self.root.keys().sorted() {
-            writeln!(f, "{:<59} Dir Size={}", path, self.dir_size.get(path).unwrap())
-                .expect("Should be able to write path.");
+            writeln!(
+                f,
+                "{:<59} Dir Size={}",
+                path,
+                self.dir_size.get(path).unwrap()
+            )
+            .expect("Should be able to write path.");
             if let Some(vec) = self.root.get(path) {
                 for (file_name, file_size) in vec.iter() {
                     let output = format!("    | {}", file_name);
