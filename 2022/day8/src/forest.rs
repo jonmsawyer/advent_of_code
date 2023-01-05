@@ -268,7 +268,6 @@ impl Forest {
             "Part Two: The highest scenic value for any tree is: {}",
             max_scenary
         );
-
     }
 }
 

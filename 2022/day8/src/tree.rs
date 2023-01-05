@@ -10,7 +10,7 @@ impl Tree {
         Tree {
             value,
             is_visible: false,
-            scenary: 1_usize
+            scenary: 1_usize,
         }
     }
 }
