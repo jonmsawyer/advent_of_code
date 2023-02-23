@@ -196,6 +196,8 @@ The interesting signal strengths can be determined as follows:
 
 The sum of these signal strengths is `13140`.
 
+(Actually, the sum of these signal strengths is `13360`, that is if you got `19` as your 220th cycle. The Advent of Code website is wrong in this case.)
+
 Find the signal strength during the 20th, 60th, 100th, 140th, 180th, and 220th cycles. What is the sum of these six signal strengths?
 
 ## Part Two
