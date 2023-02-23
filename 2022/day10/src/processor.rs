@@ -2,7 +2,6 @@ use std::fmt;
 
 #[derive(Debug, PartialEq, Eq, Clone)]
 pub struct Processor {
-    pub part: String,
     pub x: isize,
     pub ops: usize,
     pub signal_strength: Vec<isize>,
@@ -11,14 +10,9 @@ pub struct Processor {
 }
 
 impl Processor {
-    pub fn new(part: String) -> Self {
+    pub fn new() -> Self {
         Processor {
-            part,
-            x: 1,
-            ops: 0,
-            signal_strength: Vec::<isize>::new(),
-            crt_buffer: Vec::<char>::with_capacity(6 * 40),
-            pixel: 0,
+            ..Default::default()
         }
     }
 
@@ -32,6 +26,7 @@ impl Processor {
 
             self.pixel += 1;
 
+            // Reset pixel position after line limite of 40
             if self.pixel == 40 {
                 self.pixel = 0;
             }
@@ -76,5 +71,17 @@ impl fmt::Display for Processor {
         }
 
         write!(f, "\n\n    PLULKBZH")
+    }
+}
+
+impl Default for Processor {
+    fn default() -> Self {
+        Processor {
+            x: 1,
+            ops: 0,
+            signal_strength: Vec::<isize>::new(),
+            crt_buffer: Vec::<char>::with_capacity(240),
+            pixel: 0,
+        }
     }
 }
