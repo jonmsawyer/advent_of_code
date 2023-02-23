@@ -1,4 +1,5 @@
---- Day 10: Cathode-Ray Tube ---
+# Day 10: Cathode-Ray Tube
+
 You avoid the ropes, plunge into the river, and swim to shore.
 
 The Elves yell something about meeting back up with them upriver, but the river is too loud to tell exactly what they're saying. They finish crossing the bridge and disappear from view.
@@ -191,6 +192,7 @@ The interesting signal strengths can be determined as follows:
 * During the 140th cycle, register `X` has the value `21`, so the signal strength is 140 * 21 = `2940`.
 * During the 180th cycle, register `X` has the value `16`, so the signal strength is 180 * 16 = `2880`.
 * During the 220th cycle, register `X` has the value `18`, so the signal strength is 220 * 18 = `3960`.
+  * **Note here that the value isn't actually `18`, but it's actually `19`, so if you get `19` then your example program is working correctly.
 
 The sum of these signal strengths is `13140`.
 
