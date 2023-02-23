@@ -26,7 +26,7 @@ impl Processor {
 
             self.pixel += 1;
 
-            // Reset pixel position after line limite of 40
+            // Reset pixel position after line limit of 40
             if self.pixel == 40 {
                 self.pixel = 0;
             }
