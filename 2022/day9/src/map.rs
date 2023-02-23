@@ -2,7 +2,7 @@ use std::fmt;
 use std::fs::File;
 use std::io::Write;
 
-use super::{Knot, Tile, Direction, MAP_SIZE_HEIGHT, MAP_SIZE_WIDTH, START_COL_IDX, START_ROW_IDX};
+use super::{Direction, Knot, Tile, MAP_SIZE_HEIGHT, MAP_SIZE_WIDTH, START_COL_IDX, START_ROW_IDX};
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct Map {
@@ -110,36 +110,36 @@ impl Map {
             Direction::Up => {
                 self.knots[tail_idx].coords.0 = head.coords.0 + 1;
                 self.knots[tail_idx].coords.1 = head.coords.1;
-            },
+            }
             Direction::Down => {
                 self.knots[tail_idx].coords.0 = head.coords.0 - 1;
                 self.knots[tail_idx].coords.1 = head.coords.1;
-            },
+            }
             Direction::Left => {
                 self.knots[tail_idx].coords.1 = head.coords.1 + 1;
                 self.knots[tail_idx].coords.0 = head.coords.0;
-            },
+            }
             Direction::Right => {
                 self.knots[tail_idx].coords.1 = head.coords.1 - 1;
                 self.knots[tail_idx].coords.0 = head.coords.0;
-            },
+            }
             Direction::Ne => {
                 self.knots[tail_idx].coords.0 = head.coords.0 + 1;
                 self.knots[tail_idx].coords.1 = head.coords.1 - 1;
-            },
+            }
             Direction::Se => {
                 self.knots[tail_idx].coords.0 = head.coords.0 - 1;
                 self.knots[tail_idx].coords.1 = head.coords.1 - 1;
-            },
+            }
             Direction::Nw => {
                 self.knots[tail_idx].coords.0 = head.coords.0 + 1;
                 self.knots[tail_idx].coords.1 = head.coords.1 + 1;
-            },
+            }
             Direction::Sw => {
                 self.knots[tail_idx].coords.0 = head.coords.0 - 1;
                 self.knots[tail_idx].coords.1 = head.coords.1 + 1;
-            },
-            _ => {},
+            }
+            _ => {}
         }
     }
 
@@ -208,12 +208,8 @@ impl Map {
 
     pub fn write_map(&self) {
         let filename = format!("day9/Part_{}_output.txt", self.part);
-        let mut file = File::create(filename).unwrap_or_else(|filename| {
-            panic!(
-                "Should be able to open file `{}`.",
-                filename
-            )
-        });
+        let mut file = File::create(filename)
+            .unwrap_or_else(|filename| panic!("Should be able to open file `{}`.", filename));
 
         for (row_idx, row) in self.map.iter().enumerate() {
             file.write_all(b"|")
