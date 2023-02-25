@@ -70,7 +70,7 @@ impl fmt::Display for Processor {
             write!(f, "{}", self.crt_buffer[idx]).expect("Should be able to print output.");
         }
 
-        write!(f, "\n\n    PLULKBZH")
+        writeln!(f)
     }
 }
 
