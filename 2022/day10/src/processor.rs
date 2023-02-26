@@ -52,7 +52,10 @@ impl Processor {
 
     pub fn do_part(&self) {
         println!("Part One:");
-        println!("    The signal strength is {}", self.signal_strength.iter().sum::<isize>());
+        println!(
+            "    The signal strength is {}",
+            self.signal_strength.iter().sum::<isize>()
+        );
         println!("Part Two:");
         println!("{}", self);
     }
