@@ -107,12 +107,18 @@ impl Map {
                 if new_value as isize - old_value as isize == 0
                     || new_value as isize - old_value as isize == 1
                 {
-                    successors.push(Successor { pos: new_position, cost: new_value as isize });
+                    successors.push(Successor {
+                        pos: new_position,
+                        cost: new_value as isize,
+                    });
                 }
 
                 // If our next position is less than the old position, add it to Successors
                 if new_value < old_value {
-                    successors.push(Successor { pos: new_position, cost: new_value as isize });
+                    successors.push(Successor {
+                        pos: new_position,
+                        cost: new_value as isize,
+                    });
                 }
             }
         }
@@ -123,9 +129,14 @@ impl Map {
     pub fn do_part_one(&self) {
         let result = astar(
             &self.start_pos,
-            |p| self.get_successors(p).iter().map(|s| (s.pos, s.cost)).collect::<Vec<_>>(),
+            |p| {
+                self.get_successors(p)
+                    .iter()
+                    .map(|s| (s.pos, s.cost))
+                    .collect::<Vec<_>>()
+            },
             |p| (p.0 - self.end_pos.0).abs() + (p.1 - self.end_pos.1).abs(),
-            |p| *p == self.end_pos
+            |p| *p == self.end_pos,
         );
 
         println!("Part One:");
@@ -143,9 +154,14 @@ impl Map {
                 if *col == 1 {
                     let result = astar(
                         &Pos(row_idx as isize, col_idx as isize),
-                        |p| self.get_successors(p).iter().map(|s| (s.pos, s.cost)).collect::<Vec<_>>(),
+                        |p| {
+                            self.get_successors(p)
+                                .iter()
+                                .map(|s| (s.pos, s.cost))
+                                .collect::<Vec<_>>()
+                        },
                         |p| (p.0 - self.end_pos.0).abs() + (p.1 - self.end_pos.1).abs(),
-                        |p| *p == self.end_pos
+                        |p| *p == self.end_pos,
                     );
 
                     if let Some(result) = result {
@@ -158,7 +174,10 @@ impl Map {
         result_vec.sort();
 
         println!("Part Two:");
-        println!("    The shortest path for any given elevation = 1 is {}", result_vec[0]);
+        println!(
+            "    The shortest path for any given elevation = 1 is {}",
+            result_vec[0]
+        );
     }
 }
 

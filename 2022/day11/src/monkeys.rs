@@ -103,8 +103,7 @@ impl Monkeys {
             if monkey.inspected_items > top_1 {
                 top_2 = top_1;
                 top_1 = monkey.inspected_items;
-            }
-            else if monkey.inspected_items > top_2 {
+            } else if monkey.inspected_items > top_2 {
                 top_2 = monkey.inspected_items;
             }
         }
