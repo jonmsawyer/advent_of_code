@@ -18,8 +18,6 @@ impl Map {
         Map {
             width: 159,
             height: 41,
-            // width: 8,
-            // height: 5,
             ..Default::default()
         }
     }
