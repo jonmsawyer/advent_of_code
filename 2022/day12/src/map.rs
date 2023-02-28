@@ -175,7 +175,7 @@ impl Map {
 
         println!("Part Two:");
         println!(
-            "    The shortest path for any given elevation = 1 is {}",
+            "    The shortest path for any given elevation = 'a' is {}",
             result_vec[0]
         );
     }
