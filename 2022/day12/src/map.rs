@@ -16,8 +16,8 @@ pub struct Map {
 impl Map {
     pub fn new() -> Self {
         Map {
-            width: 159,
-            height: 41,
+            width: 159, // for my specific input only, ymmv
+            height: 41, // for my specific input only, ymmv
             ..Default::default()
         }
     }
