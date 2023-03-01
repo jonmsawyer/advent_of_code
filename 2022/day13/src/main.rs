@@ -14,10 +14,7 @@ fn main() {
             continue;
         }
 
-        if packet.parse(line).is_ok() {
-            continue;
-        }
-        else {
+        if packet.parse(line).is_err() {
             println!("Error reading packet: {}", line);
         }
     }
