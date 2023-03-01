@@ -1,5 +1,5 @@
-use std::fmt;
 use std::cmp::Ordering;
+use std::fmt;
 
 use serde_json::{Result, Value};
 
@@ -65,8 +65,7 @@ impl Packet {
                 return Ordering::Less;
             } else if !left_v.is_null() && right_v.is_null() {
                 return Ordering::Greater;
-            }
-            else if left_v.is_null() && right_v.is_null() {
+            } else if left_v.is_null() && right_v.is_null() {
                 return Ordering::Equal;
             }
 
@@ -81,8 +80,7 @@ impl Packet {
                     return Ordering::Less;
                 } else if left_v.as_u64() > right_v.as_u64() {
                     return Ordering::Greater;
-                }
-                else if left_v == right_v {
+                } else if left_v == right_v {
                     continue;
                 }
             }
@@ -130,12 +128,18 @@ impl Packet {
 
     pub fn do_part_one(&self) {
         println!("Part One:");
-        println!("    The sum of the distress signal indicies is {}", self.distress_sum);
+        println!(
+            "    The sum of the distress signal indicies is {}",
+            self.distress_sum
+        );
     }
 
     pub fn do_part_two(&self) {
         println!("Part Two:");
-        println!("    The decoder multiplier of indicies is {}", self.decoder_multiplier);
+        println!(
+            "    The decoder multiplier of indicies is {}",
+            self.decoder_multiplier
+        );
     }
 }
 

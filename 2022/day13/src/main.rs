@@ -1,5 +1,3 @@
-pub mod packet;
-
 use utils::*;
 
 use day13::Packet;
