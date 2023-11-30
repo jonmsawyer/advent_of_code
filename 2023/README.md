@@ -1,4 +1,4 @@
-# Advent of Code - 2022
+# Advent of Code - 2023
 
 This is my repository for my solutions to 2023's [Advent of
 Code](https://adventofcode.com/).
