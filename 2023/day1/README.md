@@ -11,11 +11,11 @@ Collect stars by solving puzzles. Two puzzles will be made available on each day
 calendar; the second puzzle is unlocked when you complete the first. Each puzzle grants one star.
 Good luck!
 
-You try to ask why they can't just use a weather machine ("not powerful enough") and where they're
-even sending you ("the sky") and why your map looks mostly blank ("you sure ask a lot of questions")
-and hang on did you just say the sky ("of course, where do you think snow comes from") when you
-realize that the Elves are already loading you into a trebuchet ("please hold still, we need to
-strap you in").
+You try to ask why they can't just use a [weather machine](https://adventofcode.com/2015/day/1)
+("not powerful enough") and where they're even sending you ("the sky") and why your map looks mostly
+blank ("you sure ask a lot of questions") and hang on did you just say the sky ("of course, where do
+you think snow comes from") when you realize that the Elves are already loading you into a
+[trebuchet](https://en.wikipedia.org/wiki/Trebuchet) ("please hold still, we need to strap you in").
 
 As they're making the final adjustments, they discover that their calibration document (your puzzle
 input) has been amended by a very young Elf who was apparently just excited to show off her art
