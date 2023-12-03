@@ -1,4 +1,3 @@
 #/bin/sh
 
-cd src
-lua main.lua
+lua src/main.lua
