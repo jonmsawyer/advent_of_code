@@ -1,0 +1,11 @@
+{
+    "Lua.diagnostics.globals": [
+        "get_input",
+        "replace_word_numbers",
+        "convert_word_to_digit",
+        "read_lines",
+        "process_line_digit",
+        "process_line_word",
+        "get_word_index"
+    ]
+}
